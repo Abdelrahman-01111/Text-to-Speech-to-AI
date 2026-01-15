@@ -1,0 +1,258 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.speech-to-text-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0;
+  color: #333;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.header p {
+  margin: 10px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.language-selector {
+  margin-bottom: 25px;
+}
+
+.language-selector label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.language-selector select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-selector select:hover:not(:disabled) {
+  border-color: #667eea;
+  background-color: #f0f0f0;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.language-selector select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.transcript-container {
+  margin-bottom: 25px;
+}
+
+.transcript-display {
+  background: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 120px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.final-text {
+  color: #333;
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.interim-text {
+  color: #aaa;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.placeholder {
+  color: #999;
+  margin: 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-mic {
+  flex: 1;
+  min-width: 150px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-mic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-mic:active {
+  transform: translateY(0);
+}
+
+.btn-mic.listening {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.mic-icon {
+  font-size: 20px;
+  display: inline-block;
+}
+
+.mic-icon.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.btn-secondary {
+  padding: 12px 20px;
+  background: #f0f0f0;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #e8e8e8;
+  border-color: #667eea;
+  color: #667eea;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status {
+  text-align: center;
+  min-height: 20px;
+}
+
+.listening-indicator {
+  color: #f5576c;
+  font-weight: 600;
+  font-size: 14px;
+  animation: blink 1.5s infinite;
+}
+
+.success-indicator {
+  color: #2ecc71;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .speech-to-text-card {
+    padding: 25px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .btn-mic {
+    min-width: 100%;
+  }
+}
