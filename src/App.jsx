@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import "./App.css";
-import send from "./send.js";
+
 function App() {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState("");
@@ -16,6 +16,28 @@ function App() {
       alert("Speech Recognition API is not supported in your browser");
       return;
     }
+    const sendMessage = async (message) => {
+      try {
+        const response = await fetch("/api/function", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: message }),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          return data.answer;
+        } else {
+          console.error("Error from API:", data.error);
+          return "Error fetching response from AI.";
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+        return "Network error while fetching response from AI.";
+      }
+    };
 
     if (!recognitionRef.current) {
       recognitionRef.current = new SpeechRecognition();
