@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     // 4. Initialize Gemini
     const AIresponse = await ai.models.generateContent({
-      model: "gemini-3-flash",
+      model: "gemini-3-flash-preview",
       contents: prompt,
     });
     // 5. Call the API
