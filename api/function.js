@@ -2,7 +2,7 @@
 import { GoogleGenAI } from "@google/genai";
 
 export default async function handler(req, res) {
-  const apiKey = process.env.GEMINI_API_KEY; //changed api key
+  const apiKey = process.env.GEMINI_API_KEY;
   const ai = new GoogleGenAI({
     apiKey: apiKey,
   });
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       contents: prompt,
     });
     // 5. Call the API
-    const text = await AIresponse.text();
+    const text = await AIresponse.text;
 
     // 6. Return the result to your frontend
     return res.status(200).json({ answer: text });
