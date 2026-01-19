@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     // 4. Initialize Gemini
     const AIresponse = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3-flash",
       contents: prompt,
     });
     // 5. Call the API
@@ -40,6 +40,6 @@ export default async function handler(req, res) {
     console.error("Gemini API Error:", error);
     return res
       .status(500)
-      .json({ error: "Failed to fetch response from Gemini." });
+      .json({ error: error.message || "Internal Server Error" });
   }
 }
